@@ -57,6 +57,8 @@
 
 
 		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		<script src="node_modules/chart.js/dist/chart.min.js" type="text/javascript"></script>
 
 	</body>
 </html>

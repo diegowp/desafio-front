@@ -1,0 +1,6 @@
+http://www.chartjs.org - gráficos
+
+Para converter graus Fahrenheit em graus Celsius, subtraia 32 e divida por 1,8.
+°C = (°F - 32) ÷ 1, 8
+
+1km é equivalente a 0,6214 milhas.

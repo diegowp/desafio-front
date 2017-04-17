@@ -9,6 +9,7 @@
 		<meta name="keywords" content="Desafio FrontEnd - DWP Clima / Tempo"> 
 		<meta name="author" content="DiegoDWP">
 		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
 	</head>
 	<body>
 		

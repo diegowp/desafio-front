@@ -1,0 +1,115 @@
+/*
+*  html5 doctor css reset | http://html5doctor.com/html-5-reset-stylesheet
+*/
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
+body{line-height:1}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+nav ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:none}
+a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent}
+ins{background-color:#ff9;color:#000;text-decoration:none}
+mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}
+del{text-decoration:line-through}
+abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}
+table{border-collapse:collapse;border-spacing:0}
+hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}
+input,select{vertical-align:middle}
+
+/*
+* VARIÁVEIS
+*/
+$cor_texto_default: #333;
+$gray_light: #f2f2f2;
+
+/*
+* MIXINS
+*/
+@mixin box_shadow( $bs_values: 1px 1px 5px #ccc ) {
+	box-shadow: $bs_values;
+	-o-box-shadow: $bs_values;
+	-ms-box-shadow: $bs_values;
+	-moz-box-shadow: $bs_values;
+	-webkit-box-shadow: $bs_values;
+}
+
+@mixin border_radius( $br_values: 5px ) {
+	border-radius: $br_values;
+	-o-border-radius: $br_values;
+	-ms-border-radius: $br_values;
+	-moz-border-radius: $br_values;
+	-webkit-border-radius: $br_values;
+}
+
+@mixin transition( $trans_values: ease-in all 200ms ) {
+	transition: $trans_values;
+	-o-transition: $trans_values;
+	-ms-transition: $trans_values;
+	-moz-transition: $trans_values;
+	-webkit-transition: $trans_values;
+}
+
+
+body{
+	color: $cor_texto_default;
+}
+h1,h2,h3,h4,h5,h6,p,span{
+	font-weight: normal;
+	color: $cor_texto_default;
+}
+
+$font-size: 28px;
+@for $i from 1 through 6 {
+	h#{$i}{
+		font-size: $font-size;
+	}
+	$font-size: ( $font-size - 4 );
+}
+
+p, span, a{
+	font-size: 14px;
+}
+
+a{
+	color: $cor_texto_default;
+	text-decoration: none;
+	display: block;
+	box-sizing: border-box;
+		&:hover{
+			color: #000;
+			text-decoration: none;
+		}
+}
+
+/*
+* DEFINIÇÕES BÁSICAS
+*/
+.fluid-box{
+	widows: 100%;
+	display: block;
+}
+
+.container-box{
+	max-width: 1200px;
+	width: 100%;
+	display: block;	
+	padding: 10px 15px;
+	margin: 0 auto;
+}
+
+.card-wrapper{
+	border: 1px solid $gray_light;
+	margin: 10px 0;
+	@include box_shadow( 0 2px 5px #ccc );
+
+	.card-header{
+		padding: 15px;
+	}
+	.card-content{
+		padding: 15px;
+	}
+	.card-footer{
+		padding: 15px;
+	}
+}
+

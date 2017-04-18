@@ -82,7 +82,7 @@ jQuery(document).ready(function($) {
 						clima['humidity'] = response.atmosphere.humidity;
 						clima['visibility'] = general_funcs.convertToKm( response.atmosphere.visibility );
 
-						for (var i = 0; i <= 4; i++) {
+						for (var i = 0; i <= 5; i++) {
 							clima['dias '+i] = [
 								response.item.forecast[i].date,
 								response.item.forecast[i].day,
@@ -93,6 +93,7 @@ jQuery(document).ready(function($) {
 						};
 
 						general_funcs.assignFields( clima );
+						general_funcs.weekend( clima );
 
 						// Destroi o gráfico
 						general_funcs.createChart( clima ).destroy();
@@ -123,13 +124,108 @@ jQuery(document).ready(function($) {
 
 		},
 
+		weekend: function( clima ){
+
+			var hasWeekend = false;
+
+			for( var i = 0; i <= 5; i++ ){
+				
+				if( (clima['dias '+i][1] == "Sat") || (clima['dias '+i][1] == "Sun") ){
+					hasWeekend = true;
+				}
+
+			}
+
+			if( hasWeekend ){
+
+				var situacao = clima['dias 1'][4];
+				var showMessage = $(".for-weekend-wrapper p");
+
+				switch( situacao ){
+					case "Tropical Storm":
+						text = "Tempestade tropical";
+						showMessage.html( text );
+						break;
+					case "Thunderstorms":
+						text = "Trovoadas";
+						showMessage.html( text );
+						break;
+					case "Drizzle":
+						text = "Garoa";
+						showMessage.html( text );
+						break;
+					case "Hail":
+						text = "Granizo";
+						showMessage.html( text );
+						break;
+					case "Dust":
+						text = "Tempo seco";
+						showMessage.html( text );
+						break;
+					case "Foggy":
+						text = "Neblina";
+						showMessage.html( text );
+						break;
+					case "Windy":
+						text = "Ventania";
+						showMessage.html( text );
+						break;
+					case "Cloudy":
+						text = "Nublado";
+						showMessage.html( text );
+						break;
+					case "Cold":
+						text = "Frio";
+						showMessage.html( text );
+						break;
+					case "Mostly Cloudy (night)":
+						text = "Nublado de noite";
+						showMessage.html( text );
+						break;
+					case "Mostly Cloudy (day)":
+						text = "Nublado de dia";
+						showMessage.html( text );
+						break;
+					case "Partly Cloudy (night)":
+						text = "Parcialmente nublado de noite";
+						showMessage.html( text );
+						break;
+					case "Partly Cloudy (day)":
+						text = "Parcialmente nublado de dia";
+						showMessage.html( text );
+						break;
+					case "Partly Cloudy":
+						text = "Parcialmente nublado";
+						showMessage.html( text );
+						break;
+					case "Mixed Rain and Hail":
+						text = "Chuva com granizo";
+						showMessage.html( text );
+						break;
+					case "Hot":
+						text = "Quente";
+						break;
+					case "Isolated Thunderstorms":
+						text = "Tempestades isoladas";
+						showMessage.html( text );
+						break;
+					default:
+						text = "Ops! Ocorreu algum erro inesperado";
+						showMessage.html( text );
+						break;
+				}
+
+			}
+
+		},
+
 		createChart: function( clima ){
 
 			var labels = [];
 			var temps = [];
 			var ctx = $("#chart");
 
-			for (var i = 0; i <= 4; i++) {
+			for (var i = 0; i <= 5; i++) {
 				var dia = clima['dias '+i][0].split(" ");
 				labels[i] = clima['dias '+i][1] + ' || Max: ' +clima['dias '+i][2]+ '/ Min: ' +clima['dias '+i][3] ;
 				temps[i] = clima['dias '+i][2];
@@ -146,7 +242,7 @@ jQuery(document).ready(function($) {
 			                'rgba(255, 206, 86, 0.2)',
 			                'rgba(75, 192, 192, 0.2)',
 			                'rgba(153, 102, 255, 0.2)',
-			                'rgba(255, 159, 64, 0.2)'
+			                'rgba(56, 162, 235, 0.2)'
 			            ],
 			            borderColor: [
 			                'rgba(255,99,132,1)',
@@ -154,7 +250,7 @@ jQuery(document).ready(function($) {
 			                'rgba(255, 206, 86, 1)',
 			                'rgba(75, 192, 192, 1)',
 			                'rgba(153, 102, 255, 1)',
-			                'rgba(255, 159, 64, 1)'
+			                'rgba(56, 162, 235, 1)'
 			            ],
 			            borderWidth: 1,
 			            data: temps,

@@ -66,6 +66,12 @@
 								<li class="vento-visibilidade cls">Visibilidade: --</li>
 							</ul>
 						</div>
+
+						<div class="for-weekend-wrapper">
+							<h3>Dicas para o final de semana:</h3>
+							<p></p>
+						</div>
+
 					</div>
 					<footer class="card-footer">
 						<canvas id="chart" width="400" height="200"></canvas>

@@ -161,6 +161,16 @@ input, select, button{
 				@include box_shadow();
 			}
 		}
+
+		/*
+		* Dicas final de semana
+		*/
+		.for-weekend-wrapper{
+			padding: 15px 0;
+			display: inline-block;
+			width: 100%;
+			margin-top: 2%;
+		}
 	}
 	.card-footer{
 		padding: 15px;

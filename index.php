@@ -13,7 +13,7 @@
 	</head>
 	<body>
 		
-		<header id="header fluid-box">
+		<header id="header" class="fluid-box">
 			<div class="content container-box">
 				<!-- <nav class="main-menu-content">
 					<a href="/" class="nav-brand">DWP</a>
@@ -32,7 +32,7 @@
 			</div>
 		</header>
 
-		<section id="main fluid-box">
+		<section id="main" class="fluid-box">
 			<div class="content container-box">
 				
 				<article id="result" class="card-wrapper">
@@ -81,7 +81,7 @@
 			</div>
 		</section>
 
-		<footer id="footer fluid-box">
+		<footer id="footer" class="fluid-box">
 			<div class="content container-box">
 				
 			</div>

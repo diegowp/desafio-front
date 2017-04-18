@@ -90,7 +90,7 @@
 
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
-		<script src="node_modules/chart.js/dist/chart.js" type="text/javascript"></script>
+		<script src="js/chart.js" type="text/javascript"></script>
 
 	</body>
 </html>

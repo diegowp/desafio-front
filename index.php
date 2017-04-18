@@ -45,31 +45,31 @@
 						<select id="cidades">
 						</select>
 						<span id="messages"></span>
-						<a href="#" class="favorito"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+						<a href="javascript:void(0)" class="favorito"><i class="fa fa-star-o" aria-hidden="true"></i></a>
 					</header>
 					<div class="card-content">
 						
-						<h3 class="local cls"></h3>
-						<span class="data cls"></span> - <span class="situacao cls"></span>
+						<h3 class="local cls">--</h3>
+						<span class="data cls">--</span> - <span class="situacao cls">--</span>
 
 						<div class="clima-wrapper">
 							<ul class="clima-itens">
-								<li class="clima-max cls">Max: </li>
-								<li class="clima-min cls">Min: </li>
+								<li class="clima-max cls">Max: --</li>
+								<li class="clima-min cls">Min: --</li>
 							</ul>
 						</div>	
 
 						<div class="vento-wrapper">
 							<ul class="vento-itens">
-								<li class="vento-umidade cls">Umidade: </li>
-								<li class="vento-velocidade cls">Velocidade: </li>
-								<li class="vento-visibilidade cls">Visibilidade: </li>
+								<li class="vento-umidade cls">Umidade do ar: --</li>
+								<li class="vento-velocidade cls">Velocidade do vento: --</li>
+								<li class="vento-visibilidade cls">Visibilidade: --</li>
 							</ul>
 						</div>
 					</div>
-					<div class="card-footer">
+					<footer class="card-footer">
 						<canvas id="chart" width="400" height="200"></canvas>
-					</div>
+					</footer>
 				</article>
 
 			</div>

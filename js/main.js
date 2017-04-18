@@ -48,58 +48,67 @@ jQuery(document).ready(function($) {
 
 			city.change(function(event) {
 				
-				var city_selected = $("option:selected", city).val()
+				var city_selected = $("option:selected", city).val();
+				general_funcs.requestCityInfo( city_selected );								
 
-				$.ajax({
-					url: 'json_api/'+city_selected+'.json',
-					type: 'GET',
-					dataType: 'json',
-					success: function( data ){
+			});
 
-						if( data.query.count == 0 ){
-							$("span#messages").show();
-							$("#messages").html("Não foi possível recuperar as informações sobre a região!");
-						}else{
+		},
 
-							$("span#messages").hide();
-							var response = data.query.results.channel;
+		requestCityInfo: function( city_selected ){
 
-							var clima = [];
+			$.ajax({
+				url: 'json_api/'+city_selected+'.json',
+				type: 'GET',
+				dataType: 'json',
+				success: function( data ){
 
-							clima['title'] = response.title
+					if( data.query.count == 0 ){
+						$("span#messages").show();
+						$("#messages").html("Não foi possível recuperar as informações sobre a região!");
+					}else{
 
-							clima['chill'] = general_funcs.convertToCelsius( response.wind.chill );
-							clima['direction'] = response.wind.direction;
-							clima['speed'] = general_funcs.convertToKm( response.wind.speed );
+						$("span#messages").hide();
+						var response = data.query.results.channel;
 
-							clima['humidity'] = response.atmosphere.humidity;
-							clima['visibility'] = general_funcs.convertToKm( response.atmosphere.visibility );
+						var clima = [];
 
-							for (var i = 0; i <= 4; i++) {
-								clima['dias '+i] = [
-									response.item.forecast[i].date,
-									response.item.forecast[i].day,
-									general_funcs.convertToCelsius( response.item.forecast[i].high ),
-									general_funcs.convertToCelsius( response.item.forecast[i].low ),
-									response.item.forecast[i].text
-								];
-							};
+						clima['title'] = response.title
 
-							general_funcs.assignFields( clima );
-							general_funcs.createChart( clima );
+						clima['chill'] = general_funcs.convertToCelsius( response.wind.chill );
+						clima['direction'] = response.wind.direction;
+						clima['speed'] = general_funcs.convertToKm( response.wind.speed );
 
-						}
+						clima['humidity'] = response.atmosphere.humidity;
+						clima['visibility'] = general_funcs.convertToKm( response.atmosphere.visibility );
+
+						for (var i = 0; i <= 4; i++) {
+							clima['dias '+i] = [
+								response.item.forecast[i].date,
+								response.item.forecast[i].day,
+								general_funcs.convertToCelsius( response.item.forecast[i].high ),
+								general_funcs.convertToCelsius( response.item.forecast[i].low ),
+								response.item.forecast[i].text
+							];
+						};
+
+						general_funcs.assignFields( clima );
+
+						// Destroi o gráfico
+						general_funcs.createChart( clima ).destroy();
+						// Recria o gráfico
+						general_funcs.createChart( clima );
 
 					}
-				});
-				
 
+				}
 			});
 
 		},
 
 		assignFields: function( clima ){
 
+			// Limpa os campos
 			$(".cls").html("");
 
 			$(".local").html( clima['title'] );
@@ -108,8 +117,8 @@ jQuery(document).ready(function($) {
 			$(".clima-max").html( "Max: " + clima['dias 1'][2] + "ºc" );
 			$(".clima-min").html( "Min: " + clima['dias 1'][3] + "ºc" );
 
-			$(".vento-umidade").html( "Umidade: " + clima['humidity'] + "%" );
-			$(".vento-velocidade").html( "Velocidade: " + clima['speed'] + " km/h" );
+			$(".vento-umidade").html( "Umidade do ar: " + clima['humidity'] + "%" );
+			$(".vento-velocidade").html( "Velocidade do vento: " + clima['speed'] + " km/h" );
 			$(".vento-visibilidade").html( "Visibilidade: " + clima['visibility'] + " km/h");
 
 		},
@@ -168,6 +177,45 @@ jQuery(document).ready(function($) {
 			    }
 			} );
 
+			return create;
+
+		},
+
+		setFavorite: function(){
+
+			$(".favorito").click(function(event) {
+				
+				var city = $("#cidades option:selected").val();
+
+				if( (city !== "") && (city !== null) ){
+
+					if( !general_funcs.getLocalStorage() ){
+
+						general_funcs.setLocalStorage( city );
+						$("i", this).removeClass('fa-star-o');
+						$("i", this).addClass('fa-star');
+
+					}else{
+						general_funcs.deleteLocalStorage();
+						$("i", this).addClass('fa-star-o');
+						$("i", this).removeClass('fa-star');
+					}
+
+
+				}
+
+			});
+
+		},
+
+		defaultValues: function(){
+
+			if( !this.getLocalStorage() ){
+				this.requestCityInfo( 'Blumenau' );
+			}else{
+				this.requestCityInfo( this.getLocalStorage() );
+			}
+
 		},
 
 		convertToCelsius: function( temp ){
@@ -180,9 +228,23 @@ jQuery(document).ready(function($) {
 			return calc.toFixed(2);
 		},
 
+		setLocalStorage: function( city ){
+			return localStorage.setItem( "cidade", city );
+		},
+
+		getLocalStorage: function(){
+			return localStorage.getItem("cidade");
+		},
+
+		deleteLocalStorage: function(){
+			return localStorage.removeItem("cidade");
+		},
+
 		init: function(){
 			this.combo_cities();
 			this.getCityInfo();
+			this.setFavorite();
+			this.defaultValues();
 		}
 
 	};

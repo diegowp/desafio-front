@@ -15,7 +15,7 @@
 		
 		<header id="header fluid-box">
 			<div class="content container-box">
-				<nav class="main-menu-content">
+				<!-- <nav class="main-menu-content">
 					<a href="/" class="nav-brand">DWP</a>
 					<ul class="main-menu">
 						<li>
@@ -28,7 +28,7 @@
 							<a href="#">Menu 3</a>
 						</li>
 					</ul>
-				</nav>
+				</nav> -->
 			</div>
 		</header>
 
@@ -37,13 +37,38 @@
 				
 				<article id="result" class="card-wrapper">
 					<header class="card-header">
-						Header
+						<h3>Selecione uma cidade</h3>
+						<select id="estados">
+							<option value="Selecione . . .">Selecione . . .</option>
+							<optgroup label="Estados"></optgroup>
+						</select>
+						<select id="cidades">
+						</select>
+						<span id="messages"></span>
+						<a href="#" class="favorito"><i class="fa fa-star-o" aria-hidden="true"></i></a>
 					</header>
 					<div class="card-content">
-						Content
+						
+						<h3 class="local cls"></h3>
+						<span class="data cls"></span> - <span class="situacao cls"></span>
+
+						<div class="clima-wrapper">
+							<ul class="clima-itens">
+								<li class="clima-max cls">Max: </li>
+								<li class="clima-min cls">Min: </li>
+							</ul>
+						</div>	
+
+						<div class="vento-wrapper">
+							<ul class="vento-itens">
+								<li class="vento-umidade cls">Umidade: </li>
+								<li class="vento-velocidade cls">Velocidade: </li>
+								<li class="vento-visibilidade cls">Visibilidade: </li>
+							</ul>
+						</div>
 					</div>
 					<div class="card-footer">
-						Footer
+						<canvas id="chart" width="400" height="200"></canvas>
 					</div>
 				</article>
 
@@ -59,7 +84,7 @@
 
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
-		<script src="node_modules/chart.js/dist/chart.min.js" type="text/javascript"></script>
+		<script src="node_modules/chart.js/dist/chart.js" type="text/javascript"></script>
 
 	</body>
 </html>

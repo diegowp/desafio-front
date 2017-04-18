@@ -184,27 +184,32 @@ jQuery(document).ready(function($) {
 		setFavorite: function(){
 
 			$(".favorito").click(function(event) {
-				
-				var city = $("#cidades option:selected").val();
+				event.preventDefault();
 
-				if( (city !== "") && (city !== null) ){
+				if( general_funcs.getLocalStorage() ){
 
-					if( !general_funcs.getLocalStorage() ){
+					general_funcs.deleteLocalStorage();
+					$("i", this).removeClass('fa-star');
+					$("i", this).addClass('fa-star-o');					
 
-						general_funcs.setLocalStorage( city );
+				}else{
+
+					var city = $("#cidades");
+					var city_selected = $("option:selected", city).val();
+
+					if( city_selected ){
+						$("span#messages").hide();
+						general_funcs.setLocalStorage( city_selected );
 						$("i", this).removeClass('fa-star-o');
 						$("i", this).addClass('fa-star');
-
 					}else{
-						general_funcs.deleteLocalStorage();
-						$("i", this).addClass('fa-star-o');
-						$("i", this).removeClass('fa-star');
+						$("span#messages").html( "Nenhuma cidade selecionada" );
+						$("span#messages").show();
 					}
-
-
+					
 				}
 
-			});
+			});	
 
 		},
 
@@ -213,6 +218,9 @@ jQuery(document).ready(function($) {
 			if( !this.getLocalStorage() ){
 				this.requestCityInfo( 'Blumenau' );
 			}else{
+				var favorito = $(".favorito");
+				$("i", favorito).removeClass('fa-star-o');
+				$("i", favorito).addClass('fa-star');
 				this.requestCityInfo( this.getLocalStorage() );
 			}
 

@@ -45,7 +45,7 @@
 						<select id="cidades">
 						</select>
 						<span id="messages"></span>
-						<a href="javascript:void(0)" class="favorito"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+						<a href="#" class="favorito"><i class="fa fa-star-o" aria-hidden="true"></i></a>
 					</header>
 					<div class="card-content">
 						

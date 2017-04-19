@@ -243,6 +243,14 @@ jQuery(document).ready(function($) {
 					text = label + "com Tempestades dispersas. Não esqueça de levar o seu guarda-chuvas.<br/><br/>";
 					showMessage.append( text );
 					break;
+				case "Scattered Showers":
+					text = label + "com Chuvas dispersas. Não esqueça de levar o seu guarda-chuvas.<br/><br/>";
+					showMessage.append( text );
+					break;
+				case "Rain":
+					text = label + "com Tempestades dispersas. Não esqueça de levar o seu guarda-chuvas.<br/><br/>";
+					showMessage.append( text );
+					break;
 				default:
 					text = "Ops! Ocorreu algum erro inesperado.<br/><br/>";
 					showMessage.append( text );

@@ -52,6 +52,7 @@ $gray_light: #f2f2f2;
 @mixin inputs( $padding: 10px 15px, $border: 1px solid $gray_light ){
 	padding: $padding;
 	border: $border;
+	-webkit-appearance:none;
 	@include border_radius();
 	@include box_shadow();
 }

@@ -183,6 +183,22 @@ input, select, button{
 	.card-footer{
 		padding: 15px;
 		overflow: auto;
+
+		#semana ul{
+			list-style: none;
+
+			li{
+				display: block;
+				float: left;
+				margin-right: 1%;
+				margin-top: 2%;
+				text-align: center;
+				line-height: 20px;
+				padding: 10px 15px;
+				box-sizing: border-box;
+				border: 1px solid $gray_light;
+			}
+		}
 	}
 }
 

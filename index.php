@@ -75,6 +75,8 @@
 					</div>
 					<footer class="card-footer">
 						<canvas id="chart" width="600" height="400"></canvas>
+
+						<div id="semana" class="cls"></div>
 					</footer>
 				</article>
 

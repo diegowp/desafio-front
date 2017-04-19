@@ -116,13 +116,24 @@ jQuery(document).ready(function($) {
 
 			$(".local").html( clima['title'] );
 			$(".data").html( clima['dias 1'][0] );
-			$(".situacao").html( clima['dias 1'][4] );
+			$(".situacao").html( clima['dias 1'][4] + " - " );
 			$(".clima-max").html( "Max: " + clima['dias 1'][2] + "ºc" );
 			$(".clima-min").html( "Min: " + clima['dias 1'][3] + "ºc" );
 
 			$(".vento-umidade").html( "Umidade do ar: " + clima['humidity'] + "%" );
 			$(".vento-velocidade").html( "Velocidade do vento: " + clima['speed'] + " km/h" );
 			$(".vento-visibilidade").html( "Visibilidade: " + clima['visibility'] + " km");
+
+			// Informações da semana
+			var weekDetail = $("#semana");
+			weekDetail.html('<ul class="semana-list"></ul>');
+			semanaList = $(".semana-list", weekDetail);
+
+			for( var i = 0; i <= 7; i++  ){
+				semanaList.append('<li>'+clima["dias "+i][1]+' <br/> Max: '+clima["dias "+i][2]+'ºc <br/> Min: '+clima["dias "+i][3]+'ºc </li>');
+			}
+
+			this.weatherCases( clima['dias 1'] );
 
 		},
 
@@ -139,25 +150,33 @@ jQuery(document).ready(function($) {
 
 			}
 
-			this.weekendCases( sat );
-			this.weekendCases( sunday );			
+			this.weatherCases( sat );
+			this.weatherCases( sunday );			
 
 		},
 
-		weekendCases: function( day ){
+		weatherCases: function( day ){
 
-			var showMessage = $(".for-weekend-wrapper p");
-			var splitDay = day[0].split(" ");
-			var label = "";
+			var showMessage = "",
+				label = "",
+				splitDay = "";
+
+			console.log( day );
 
 			if( day[1] == "Sat" ){
+				splitDay = day[0].split(" ");
+				showMessage = $(".for-weekend-wrapper p");
 				label = "Para esse Sabádo dia " + splitDay[0] + ", teremos um dia ";
 			}
 			else if( day[1] == "Sun"){
+				splitDay = day[0].split(" ");
+				showMessage = $(".for-weekend-wrapper p");
 				label = "Para esse Domingo dia " + splitDay[0] + ", teremos um dia ";
 			}
-
-			console.log( day[4] );
+			else if( (day[1] !== 'Sat') && (day[1] !== 'Sun') ){
+				showMessage = $(".situacao");
+				label = "Hoje teremos um dia ";
+			}
 
 			switch( day[4] ){
 				case "Tropical Storm":

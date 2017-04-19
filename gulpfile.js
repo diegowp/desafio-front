@@ -1,9 +1,11 @@
 'user strict';
 
-var gulp      = require('gulp');
-var connect   = require('gulp-connect');
-var sass      = require('gulp-sass');
-var sourcemaps = require('gulp-sourcemaps');
+var gulp        = require('gulp');
+var connect     = require('gulp-connect');
+var sass        = require('gulp-sass');
+var sourcemaps  = require('gulp-sourcemaps');
+var concat      = require('gulp-concat');
+var uglify      = require('gulp-uglify');
 
 gulp.task('connect', function() {
     // content
@@ -11,6 +13,18 @@ gulp.task('connect', function() {
         port: 8888,
         livereload: true
     });
+});
+
+gulp.task('javascript', function(){
+    return gulp.src('./js/main.js')
+      .pipe(sourcemaps.init())
+      .pipe(concat('main.min.js'))
+      .pipe(uglify())
+      .pipe(sourcemaps.write('./'))
+      .pipe(gulp.dest('./js'))
+      .on('error', function(err){
+        console.error('Erro no compress', err.toString());
+      });
 });
 
 gulp.task('sass', function() {
@@ -26,7 +40,7 @@ gulp.task('sass', function() {
 
 gulp.task('watch', function() {
     // content
-    gulp.watch(['./scss/*.scss'], ['sass']);
+    gulp.watch(['./scss/*.scss', './js/main.js'], ['sass','javascript']);
 });
 
 gulp.task('default',['connect','sass','watch']);

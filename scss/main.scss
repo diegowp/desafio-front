@@ -186,11 +186,17 @@ input, select, button{
 }
 
 span#messages {
+	width: 60%;
     padding: 15px;
+    margin-top: 1%;
     display: none;
     border: 1px solid #ffaeae;
     background-color: #ffcbcb;
     @include border_radius( 5px );
+
+    &.show{
+    	display: block;
+    }
 }
 
 

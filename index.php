@@ -44,8 +44,8 @@
 						</select>
 						<select id="cidades">
 						</select>
-						<span id="messages"></span>
 						<a href="#" class="favorito"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+						<span id="messages"></span>
 					</header>
 					<div class="card-content">
 						
@@ -90,7 +90,7 @@
 
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/chart.js"></script>
-		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/main.min.js"></script>
 
 	</body>
 </html>

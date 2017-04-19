@@ -1,5 +1,4 @@
-jQuery(document).ready(function($) {
-	
+jQuery(document).ready(function($) {	
 
 	var general_funcs = {
 
@@ -101,6 +100,10 @@ jQuery(document).ready(function($) {
 
 					}
 
+				},
+				error: function(){
+					$("#messages").html("Ops, ocorreu um erro inesperado! Não foi possível recuperar as informações sobre essa cidade.");
+					$("#messages").addClass('show');
 				}
 			});
 
@@ -158,39 +161,39 @@ jQuery(document).ready(function($) {
 
 			switch( day[4] ){
 				case "Tropical Storm":
-					text = "Tempestade tropical";
+					text = "com Tempestades tropicais. Não esqueça de sair acompanhando de um guarda-chuvas.<br/><br/>";
 					showMessage.append( text );
 					break;
 				case "Thunderstorms":
-					text = "Trovoadas";
+					text = label + "com Trovoadas. Evite a manipulação de equipamentos que conduzam eletricidade e procure um local seguro para se abrigar.<br/><br/>";
 					showMessage.append( text );
 					break;
 				case "Drizzle":
-					text = "Garoa";
+					text = label + "com Garoa. Talvez assistir um Netflix seja uma boa opção =)<br/><br/>";
 					showMessage.append( text );
 					break;
 				case "Hail":
-					text = "Granizo";
+					text = label + "com Granizo. Grandes chances de chuvas de granizo, evite locais abertos e procure um lugar seguro para se abrigar.<br/><br/>";
 					showMessage.append( text );
 					break;
 				case "Dust":
-					text = "Tempo seco";
+					text = label + "com Tempo seco. Mantenha o corpo hidratado, e evite ficar muito tempo expoosto ao Sol.<br/><br/>";
 					showMessage.append( text );
 					break;
 				case "Foggy":
-					text = "Neblina";
+					text = label + "com Neblina. Muito cuidado nas estradas, neblina requer atenção dobrada.<br/><br/>";
 					showMessage.append( text );
 					break;
 				case "Windy":
-					text = "Ventania";
+					text = label + "com Ventania. Evite locais com muitas árvores. Caso seja pego de surpresa, procure um local seguro para se abrigar.<br/><br/>";
 					showMessage.append( text );
 					break;
 				case "Cloudy":
-					text = "Nublado";
+					text = label + "Nublado. Se for sair, talvez seja bom levar um guarda-chuvas =) <br/><br/>";
 					showMessage.append( text );
 					break;
 				case "Cold":
-					text = "Frio";
+					text = label + "Frio. Hora de tirar o casaco do guard-roupas, Talvez um cinema ou uma boa bebida quente em casa seja uma opção =).<br/><br/>";
 					showMessage.append( text );
 					break;
 				case "Mostly Cloudy":
@@ -198,30 +201,31 @@ jQuery(document).ready(function($) {
 					showMessage.append( text );
 					break;
 				case "Partly Cloudy":
-					text = "Parcialmente nublado";
-					showMessage.append( text );
-					break;
-				case "Partly Cloudy":
-					text = "Parcialmente nublado";
+					text = label + "Parcialmente nublado. O dia não será tão bonito, sair com um guarda-chuvas é boa idéia.<br/<br/>";
 					showMessage.append( text );
 					break;
 				case "Mixed Rain and Hail":
-					text = "Chuva com granizo";
+					text = label + "com Chuva com granizo. Evite ficar em locais abertos.<br/><br/>";
 					showMessage.append( text );
 					break;
 				case "Hot":
-					text = "Quente";
+					text = label + "Quente. Beba bastante água e evite a exposição ao Sol em excesso no período das 11h às 15h.<br/><br/>";
+					showMessage.append( text );
+					break;
+				case "Sunny":
+					text = label + "Ensolarado. Beba bastante água e aproveite esse belo dia para conhecer os parques de sua cidade =)<br/><br/>";
+					showMessage.append( text );
 					break;
 				case "Isolated Thunderstorms":
-					text = "Tempestades isoladas";
+					text = label + "com Tempestades isoladas. Não esqueça de levar o seu guarda-chuvas.<br/><br/>";
 					showMessage.append( text );
 					break;
 				case "Scattered Thunderstorms":
-					text = label + "com Tempestades dispersas. Não esqueça de levar o seu guarda-chuvas<br/><br/>";
+					text = label + "com Tempestades dispersas. Não esqueça de levar o seu guarda-chuvas.<br/><br/>";
 					showMessage.append( text );
 					break;
 				default:
-					text = "Ops! Ocorreu algum erro inesperado";
+					text = "Ops! Ocorreu algum erro inesperado.<br/><br/>";
 					showMessage.append( text );
 					break;
 			}
@@ -322,11 +326,13 @@ jQuery(document).ready(function($) {
 		defaultValues: function(){
 
 			if( !this.getLocalStorage() ){
-				this.requestCityInfo( 'Blumenau' );
+				this.requestCityInfo( 'Blumenauu' );
+				$("#cidades").append('<option value="Blumenau">Blumenau</option>');
 			}else{
 				var favorito = $(".favorito");
 				$("i", favorito).removeClass('fa-star-o');
 				$("i", favorito).addClass('fa-star');
+				$("#cidades").append('<option value="'+this.getLocalStorage()+'">'+this.getLocalStorage()+'</option>');
 				this.requestCityInfo( this.getLocalStorage() );
 			}
 

@@ -51,7 +51,7 @@ Testado nos navegadores:
 
 Para gerar os arquivos das cidades, fiz um script simples em php ( create_api.php ) para consultar a [API do Yahoo weather](https://developer.yahoo.com/weather/).
 
-Confesso que vacilei em um detalhe na hora de criar os arquivos, acabei invalidando cidades com o mesmo nome em Estados diferentes.
+Confesso que vacilei em um detalhe na hora de criar os arquivos, acabei invalidando cidades com o mesmo nome em Estados diferentes. Consequentemente quando selecionada uma dessas cidades, existe a possibilidade de apresentar a informação incorreta.
 
 > Como eu resolveria isso? Adicionando a sigla do Estado ao nome do arquivo.
 

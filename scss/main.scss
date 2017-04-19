@@ -98,15 +98,15 @@ body{
 
 .fluid-box{
 	width: 100%;
-	display: inline-block;
+	display: block;
 }
 
 .container-box{
 	width: 100%;
-	max-width: 1100px;
+	max-width: 1200px;
 	padding: 10px 15px;
 	margin: 0 auto;
-	display: inline-block;
+	display: block;
 }
 
 input, select, button{
@@ -181,6 +181,7 @@ input, select, button{
 	}
 	.card-footer{
 		padding: 15px;
+		overflow: auto;
 	}
 }
 
@@ -195,6 +196,35 @@ span#messages {
 
 @media screen and ( max-width: 768px ){
 
+	#main > .content{
+		width: 90%;
+	}
 
+}
+
+@media screen and ( max-width: 480px ){
+
+	#estados, #cidades{
+		width: 100%;
+		margin: 1% 0;
+	}
+
+	.card-wrapper{
+		.card-header{
+			.favorito{
+				float: none;
+			}
+		}
+		.card-content{
+			ul{
+				li{
+					width: 100%;
+					box-sizing: border-box;
+					padding: 15px 10px;
+					text-align: left;
+				}
+			}
+		}
+	}
 
 }

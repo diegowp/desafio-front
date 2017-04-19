@@ -3,13 +3,13 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Desafio FrontEnd - DWP Clima / Tempo</title>		
 		<meta name="description" content="Desafio FrontEnd - DWP Clima / Tempo">
-		<meta name="keywords" content="Desafio FrontEnd - DWP Clima / Tempo"> 
+		<meta name="keywords" content="Desafio FrontEnd - DWP Clima Tempo"> 
 		<meta name="author" content="DiegoDWP">
-		<link rel="stylesheet" href="css/main.css">
 		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/main.css">
 	</head>
 	<body>
 		
@@ -74,7 +74,7 @@
 
 					</div>
 					<footer class="card-footer">
-						<canvas id="chart" width="400" height="200"></canvas>
+						<canvas id="chart" width="600" height="400"></canvas>
 					</footer>
 				</article>
 
@@ -89,8 +89,8 @@
 
 
 		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/chart.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
-		<script src="js/chart.js" type="text/javascript"></script>
 
 	</body>
 </html>

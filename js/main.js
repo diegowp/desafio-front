@@ -326,7 +326,7 @@ jQuery(document).ready(function($) {
 		defaultValues: function(){
 
 			if( !this.getLocalStorage() ){
-				this.requestCityInfo( 'Blumenauu' );
+				this.requestCityInfo( 'Blumenau' );
 				$("#cidades").append('<option value="Blumenau">Blumenau</option>');
 			}else{
 				var favorito = $(".favorito");

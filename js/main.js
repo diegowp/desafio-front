@@ -10,7 +10,7 @@ jQuery(document).ready(function($) {
 			$.ajax({
 				url: 'js/estados_cidades.json',
 				type: 'GET',
-				dataType: 'json',
+				dataType: 'jsonp',
 				success: function( data ){
 					
 					$.each( data, function( index, val ) {
@@ -61,7 +61,7 @@ jQuery(document).ready(function($) {
 			$.ajax({
 				url: 'json_api/'+city_selected+'.json',
 				type: 'GET',
-				dataType: 'json',
+				dataType: 'jsonp',
 				success: function( data ){
 
 					if( data.query.count == 0 ){

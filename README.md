@@ -33,6 +33,20 @@ Testado nos navegadores:
  - Edge
  - Opera
 
+### Mensagens de erros.
+
+> Não foi possível recuperar as informações sobre a região!
+( A API não retornou nenhum dado da região )
+
+> Ops, ocorreu um erro inesperado! Não foi possível recuperar as informações sobre essa cidade.
+( Quando o request retorna 404 )
+
+> Nenhuma cidade selecionada.
+( Quando o usuário tenta adicionar aos favoritos sem selecionar a cidade )
+
+> Ops! Ocorreu algum erro inesperado.
+( Exibido nos campos destinados as informações do clima, ele é apresentado quando a situação do clima não foi tratada no switch no main.js )
+
 ### Observações gerais sobre o projeto.
 
 Para gerar os arquivos das cidades, fiz um script simples em php ( create_api.php ) para consultar a [API do Yahoo weather](https://developer.yahoo.com/weather/).
